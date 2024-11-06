@@ -1,0 +1,50 @@
+
+from random import randint
+
+sorteio = []
+while (len(sorteio) < 6):
+    sorteado = randint(1, 60)
+    if sorteado not in sorteio:
+        sorteio.append(sorteado)
+
+print(sorteio)
+
+vetor = [5, 35, 140, 420, 1050, 2310, 4620, 8580, 15015, 25025, 40040, 61880, 92820, 135660, 193800]
+
+num_apostas = int(input("digite a quantidade de apostas: "))
+while num_apostas < 6 or num_apostas > 20:
+    num_apostas = int(input("digite a quantidade de apostas: "))
+print(f"valor da aposta = R$ {vetor(num_apostas - 6):.2f}")
+
+
+aposta = []
+i = 0
+while len(aposta) <= num_apostas:
+    numero = int(input(f"digite um numero {i + 1}: "))
+    while numero < 1 or numero > 60:
+        print("numero invvalido")
+        numero = int(input(f"digite um numero {i + 1}: "))
+    if numero in aposta:
+        print("numero repetido")
+    else:
+         aposta.append(numero)
+         i += 1
+
+acertos = 0
+num_acertados = 0
+for i in range(len(sorteio)):
+    if sorteio[i] in aposta:
+        acertos += 1
+        num_acertados.append(sorteio[i])
+
+
+print(f"acertos= {acertos}")
+if acertos == 4:
+    print("acertou a quadra")
+else:
+    if acertos == 5:
+        print("acertou a quina")
+    else:
+        if acertos == 6:
+            print("acertou a sena")
+print(f"numeros acertados = {num_acertados}")
